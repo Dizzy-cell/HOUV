@@ -1,0 +1,41 @@
+batch_size: 64
+workers: 0
+nepoch: 100
+model_name: 'voxel_asym'
+dataset_name: 'MVP_CP_voxel_point'
+#load_model: "./log/pcn_cd_debug_2021-07-14T01:30:41/network.pth"
+load_model: null
+start_epoch: 0
+num_points: 2048
+work_dir: log/
+flag: debug
+loss: CrossEntropy
+manual_seed: 2021
+use_mean_feature: False
+step_interval_to_print: 20
+epoch_interval_to_save: 1
+epoch_interval_to_val: 1
+varying_constant: 0.01, 0.1, 0.5, 1
+varying_constant_epochs: 5, 15, 30
+
+grid_size: [50,50,50]
+fea_dim: 7                 # input_feature
+embedding_dim: 32          # input embedding
+init_size: 32              # for spconv-3d build
+output_shape: 8            # predict shape
+
+
+lr: 0.001
+lr_decay: True
+lr_decay_interval: 40
+lr_decay_rate: 0.7
+lr_step_decay_epochs: null
+lr_step_decay_rates: null
+lr_clip: 1.e-6
+optimizer: Adam
+weight_decay: 0
+betas: 0.9, 0.999
+
+# test
+save_vis: True
+eval_emd: False

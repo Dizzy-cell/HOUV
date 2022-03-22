@@ -1,0 +1,6 @@
+[submodule "spconv"]
+	path = completion/spconv
+	url = https://github.com/traveller59/spconv.git
+[submodule "completion/spconv"]
+	path = completion/spconv
+	url = https://github.com/traveller59/spconv.git

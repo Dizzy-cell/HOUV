@@ -1,0 +1,6 @@
+__pycache__/
+*.so
+*.pyc
+mvp.tar
+registration2
+oldgit

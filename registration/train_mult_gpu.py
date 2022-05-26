@@ -105,7 +105,7 @@ def train():
 
             #import time
             #start = time.time()
-            r_err, t_err, ans = solve(src_rotated, tgt_rotated, transform, src, tgt, label, add_ps, kernel = 32)
+            r_err, t_err, ans = solve(src_rotated, tgt_rotated, transform, src, tgt, label, add_ps, kernel = 4)
             #end = time.time()
             #print(end - start)
 
@@ -122,10 +122,6 @@ def train():
 
             if i % 10 == 0:
                 logging.info('RotE:{} TransE:{} MSE:{}'.format(train_loss_meter['RotE'].avg, train_loss_meter['transE'].avg, train_loss_meter['MSE'].avg))
-
-        if epoch % args.epoch_interval_to_save == 0:
-            #save_model('%s/network.pth' % log_dir, net)
-            logging.info("Saving net...")
 
         print(train_loss_meter['RotE'].avg)
         print(train_loss_meter['transE'].avg)

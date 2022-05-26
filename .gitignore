@@ -3,4 +3,6 @@ __pycache__/
 *.pyc
 mvp.tar
 registration2
+DeepGlobalRegistration
+FCGF
 oldgit

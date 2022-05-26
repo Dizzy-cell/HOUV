@@ -52,33 +52,36 @@ data
 :-------------------------:|:---------------- ---------:
 ![](./images/partial_pcds.gif) | ![](./images/complete_pcds.gif) -->
 
+### Requirements
++ Four GPUS with a memory greater than 10G. (We only verified the training and prediction with the four GPUs.)
++ The other configs is same like [MVP_Benchmark](https://github.com/paul007pl/MVP_Benchmark.git).
++ The more CPU cores, the better running speed, for using multi-process processing.
 
 ### Usage
-+ To train a model: run `python train.py -c ./cfgs/*.yaml`, e.g. `python train.py -c ./cfgs/pcn.yaml`
-+ To test a model: run `python test.py -c ./cfgs/*.yaml`, e.g. `python test.py -c ./cfgs/pcn.yaml`
-+ Config for each algorithm can be found in `cfgs/`.
-+ `run_train.sh` and `run_test.sh` are provided for SLURM users. 
++ The original data put in `completion/data/.`.
++ Download the pretrained model, unzip in `./log/vrcnet_knn_512_ori/`, e.g. `./log/vrcnet_knn_512_ori/new.pth`.
+ - Since the model is small, we compressed the code and the pretrained model together in `log2`. 
+ - Simply `mv log2 log` to run the test and train script.
++ `cd completion` into workspace.
++ To train a model: run `bash run_train.sh`. That can be skipped if have pretrained model.
++ To test a model: run `bash run_test.sh`.
++ The results are saved in `./log/vrcnet_knn_512_ori/result.h5`.
++ The submission in `./log/vrcnet_knn_512_ori/submsission_last.zip`.
++ Config about this method can be found in `cfgs/vrcnt_knn.yaml`.
++ The cost of test maybe one or two hours. 
 
+### Method 
+We apply data mining techniques like clustering on the original dataset. We propose new problems called (MVPN) the Multi-View Point cloud completion with some Noises like other object partial point clouds. We analyzed VRCNet and made detailed analysis experiments. We improved VRCNet to adapt the MVPN problem. 
 
 ## Citation
-If you find our code useful, please cite our paper:
-```bibtex
-@article{pan2021variational,
-  title={Variational Relational Point Completion Network},
-  author={Pan, Liang and Chen, Xinyi and Cai, Zhongang and Zhang, Junzhe and Zhao, Haiyu and Yi, Shuai and Liu, Ziwei},
-  journal={arXiv preprint arXiv:2104.10154},
-  year={2021}
-}
-```
-
+If any bugs and problems, please contact our by [email](1310135753@qq.com).
 
 ## License
 Our code is released under Apache-2.0 License.
 
-
 ## Acknowledgement
 We include the following algorithms:  
 [1] [PCN](https://github.com/wentaoyuan/pcn)    
-[2] [ECG](https://github.com/paul007pl/ECG)    
+[2] [ECG](https://github.com/paul007pl/ECG)  
 [3] [VRCNet](https://github.com/paul007pl/VRCNet)   
 

@@ -367,18 +367,19 @@ def getPredict_angle(src, src_rotated, pose = None,  src_ori = None, tgt_ori=Non
 
     batch_size *= kernel
 
-    vc_numpy = np.random.randn(batch_size, 3)
-    num = 0
-    for x0 in [-1,0,1]:
-        for y0 in [-1,0,1]:
-            for z0 in [-1, 0, 1]:
-                if x0 == 0 and y0 ==0 and z0 == 0:
-                    continue
-                vc_numpy[num] = np.array((x0, y0, z0))
-                num += 1
+    # vc_numpy = np.random.randn(batch_size, 3)
+    # num = 0
+    # for x0 in [-1,0,1]:
+    #     for y0 in [-1,0,1]:
+    #         for z0 in [-1, 0, 1]:
+    #             if x0 == 0 and y0 ==0 and z0 == 0:
+    #                 continue
+    #             vc_numpy[num] = np.array((x0, y0, z0))
+    #             num += 1
 
+    #V_c = Variable(torch.from_numpy(vc_numpy), requires_grad = True) # 
 
-    V_c = Variable(torch.from_numpy(vc_numpy), requires_grad = True) # 
+    V_c = Variable(torch.from_numpy(np.random.randn(batch_size, 3)), requires_grad = True)
     angle_c = Variable(torch.from_numpy(np.random.randn(batch_size, 1)), requires_grad = True) #[0,1] 
     tran_c =  Variable(torch.from_numpy(np.random.randn(batch_size , 3)), requires_grad = True) #[0,0.5]
     tran_s_cpu = Variable(torch.from_numpy(np.random.randn(batch_size, 1)), requires_grad = True) #[0,1] 
@@ -401,7 +402,7 @@ def getPredict_angle(src, src_rotated, pose = None,  src_ori = None, tgt_ori=Non
 
 
         angle = torch.sin(angle * pi) * pi / 8 + pi / 8 + angle_base * pi / 4
-        tran_s = torch.sin(tran_s * pi) * 0.125 + 0.125 # MVP data
+        tran_s = torch.sin(tran_s * pi) * 1 # MVP data               # 0.125
         #tran_s = torch.sin(tran_s * pi) * 0.25 + 0.25  # Other data
         #tran_s = torch.tanh(tran_s) * 0.125 + 0.125
         #trans_s = torch.sigmoid(tran_s) * 0.250
